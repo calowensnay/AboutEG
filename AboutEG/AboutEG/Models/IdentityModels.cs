@@ -23,11 +23,15 @@ namespace AboutEG.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+           string  CadenaConexionBBDD = "Data Source=.;Initial Catalog=AboutEGDB;User Id=AboutEG;Password=Pa$$w0rd2019&";
+            this.Database.Connection.ConnectionString = CadenaConexionBBDD;
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<DistribucionTerritorial> DistribucionesTerritoriales { get; set; }
     }
 }
