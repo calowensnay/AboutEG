@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<AboutEG.Models.DistribucionTerritorial>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Distribucion Territorial";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -22,15 +22,21 @@
             @Html.DisplayNameFor(model => model.Nivel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PadreId)
+            @Html.DisplayNameFor(model => model.Parent)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaIngreso)
+            @Html.DisplayNameFor(model => model.Tipo)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaUltimaModificacion)
-        </th>
+        <!--
+    <th>
+        Html.DisplayNameFor(model => model.FechaIngreso)
+    </th>
+    <th>
+        Html.DisplayNameFor(model => model.FechaUltimaModificacion)
+    </th>
+           -->
         <th></th>
+
     </tr>
 
 @foreach (var item in Model) {
@@ -45,20 +51,26 @@
             @Html.DisplayFor(modelItem => item.Nivel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PadreId)
+            @Html.DisplayFor(modelItem => item.Parent.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FechaIngreso)
+            @Html.DisplayFor(modelItem => item.Tipo)
+        </td>
+        <!--
+        <td>
+            Html.DisplayFor(modelItem => item.FechaIngreso)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FechaUltimaModificacion)
+            Html.DisplayFor(modelItem => item.FechaUltimaModificacion)
         </td>
+       -->
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Nuevo", "Create", new { padreId = item.Id }) |
+            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
         </td>
     </tr>
-}
+    }
 
-</table>
+    </table>

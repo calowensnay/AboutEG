@@ -32,6 +32,12 @@ namespace AboutEG.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<DistribucionTerritorial> DistribucionesTerritoriales { get; set; }
+        public DbSet<DistribucionTerritorial> DistribucionesTerritorial { get; set; }
+
+        public System.Data.Entity.DbSet<AboutEG.Models.Tag> Tags { get; set; }
+
+        public System.Data.Entity.DbSet<AboutEG.Models.Post> Posts { get; set; }
+
+        public System.Data.Entity.DbSet<AboutEG.Models.Category> Categories { get; set; }
     }
 }
