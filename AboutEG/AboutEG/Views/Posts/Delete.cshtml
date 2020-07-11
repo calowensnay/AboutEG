@@ -1,0 +1,89 @@
+﻿@model AboutEG.ViewModels.PostDeleteViewModel
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_EditorLayout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Está seguro de desear eliminarlo?</h3>
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SlugUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SlugUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HtmlContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HtmlContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsProvisional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsProvisional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ahutor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ahutor)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - AboutEG</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("About EG", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="categories">Categorías <span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="categories-ids"></ul>
+                    </li>
+                    <li>@Html.ActionLink("Archivo", "Index", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sobre Nosotros <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Sobre AboutEG", "About", "Home")</li>
+                            <li>@Html.ActionLink("Equipo", "About", "Home")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Colabora", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Etiquetas", "Index", "Tags")</li>
+                            <li>@Html.ActionLink("Categorias", "Index", "Categories")</li>
+                            <li>@Html.ActionLink("Publicaciones", "Index", "Posts")</li>
+                        </ul>
+                    </li>
+
+                    <li>@Html.ActionLink("Territorios", "Index", "DistribucionTerritorial")</li>
+
+                </ul>
+                @Html.Partial("_OnlyLoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div>
+            <ul id="navigation" class="breadcrumb"></ul>
+        </div>
+        @RenderBody()
+        <hr />
+
+    </div>
+    <footer>
+        <p>Copyright © AboutEG @DateTime.Now.Year. Todos Los Derechos Reservados</p>
+    </footer>
+    <div id="gotop" class="gotop_active">
+        <a href="#" class="scrollup">Scroll</a>
+    </div>
+
+
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+
+        $('#categories').click(function () {
+            $.getJSON('@Url.Action("LoadCategoriesJSON","Categories")', function (categories) {
+                $('#categories-ids').empty();
+                $.each(categories, function (index, category) {
+                    $('#categories-ids').append(
+                        '<li><a href="#">' + category.Name+'<a/></li>'
+                    );
+                });
+            });
+        });
+
+        jQuery(document).ready(function () {
+            var url = window.location.href;
+            var base = 'http://localhost:61361/';
+            var urlRest = url.substr(base.length, url.length - base.length);
+            $('#navigation').removeAttr('<li>');
+            $('#navigation').append(
+                '<li>' +
+                'Está aquí: &#160;'
+                +'</li>');
+            if (urlRest == null || urlRest == "") {
+
+
+                $('#navigation').append(
+                    '<li>' +
+                    '<span>' +
+                    'Inicio' +
+                    '</span>' +
+                    '</li>'
+                );
+            } else if (url.includes('About')) {
+                $('#navigation').append(
+                    '<li>' +
+                    '<span>' +
+                    'Sobre About EG' +
+                    '</span>' +
+                    '</li>'
+                );
+
+            }
+        });
+
+
+    </script>
+
+</body>
+</html>

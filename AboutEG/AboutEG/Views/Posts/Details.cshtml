@@ -1,0 +1,83 @@
+﻿@model AboutEG.ViewModels.PostDetailViewModel
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_EditorLayout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SlugUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SlugUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HtmlContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HtmlContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsProvisional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsProvisional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ahutor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ahutor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Volver", "Index")
+</p>
